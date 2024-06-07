@@ -13,6 +13,22 @@ const allProductsFromDB = [
   },
 ];
 
+const productFromDB = { id: 3, name: 'Escudo do Capitão América' };
+const productFromModel = { id: 3, name: 'Escudo do Capitão América' };
+
+const successfulFromService = {
+  status: 'SUCCESSFUL',
+  data: { id: 3, name: 'Escudo do Capitão América' },
+};
+const notFoundFromService = {
+  status: 'NOT_FOUND',
+  data: { message: 'Product not found' },
+};
+
 module.exports = {
   allProductsFromDB,
+  productFromDB,
+  productFromModel,
+  successfulFromService,
+  notFoundFromService,
 };

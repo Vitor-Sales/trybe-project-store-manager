@@ -3,9 +3,11 @@ require('express-async-errors');
 const { productModel } = require('./models');
 // const { productService } = require('./services');
 const { productController } = require('./controllers');
+// const { productRoutes } = require('./routes');
 
 const app = express();
 app.use(express.json());
+// app.use('/products', productRoutes);
 
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
@@ -17,14 +19,6 @@ app.get('/products', async (_req, res) => {
 
   return res.status(200).json(products);
 });
-
-// app.get('/products/:id', async (req, res) => {
-//   const { id } = req.params;
-
-//   const product = await productService.findById(id);
-
-//   return res.status(200).json(product);
-// });
 
 app.get('/products/:id', productController.findProductById);
 
