@@ -9,7 +9,7 @@ const {
   productFromModel,
 } = require('../mocks/product.mock');
 
-describe('[MODEL] - Testes Unitários model', function () {
+describe('[PRODUCT.MODEL] - Testes Unitários model', function () {
   it('Product findAll() - Listar todos os produtos com sucesso.', async function () {
     // Arrange
     sinon.stub(connection, 'execute').resolves([allProductsFromDB]);
