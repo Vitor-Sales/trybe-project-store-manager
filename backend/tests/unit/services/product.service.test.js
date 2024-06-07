@@ -4,7 +4,7 @@ const { productService } = require('../../../src/services');
 const { productModel } = require('../../../src/models');
 const { productFromModel } = require('../mocks/product.mock');
 
-describe('[SERVICE] - Testes Unitários services', function () {
+describe('[PRODUCT.SERVICE]', function () {
   it('Product findById(id) - Listar produto com sucesso', async function () {
     // Arrange
     sinon.stub(productModel, 'findById').resolves(productFromModel);

@@ -8,7 +8,7 @@ const { successfulFromService, notFoundFromService } = require('../mocks/product
 
 chai.use(sinonChai);
 
-describe('[CONTROLLER] - Testes Unitários controller', function () {
+describe('[PRODUCT.CONTROLLER]', function () {
   it('Product findProductById(req, res) - Passar resposta com sucesso', async function () {
     // Arrange
     sinon.stub(productService, 'findById').resolves(successfulFromService);

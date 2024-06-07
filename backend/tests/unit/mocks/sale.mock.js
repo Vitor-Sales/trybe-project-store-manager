@@ -32,7 +32,29 @@ const saleFromDB = [
   },
 ];
 
+const successfulFromService = {
+  status: 'SUCCESSFUL',
+  data: [
+    {
+      date: '2024-06-07T23:21:48.000Z',
+      productId: 1,
+      quantity: 5,
+    },
+    {
+      date: '2024-06-07T23:21:48.000Z',
+      productId: 2,
+      quantity: 10,
+    },
+  ],
+};
+const notFoundFromService = {
+  status: 'NOT_FOUND',
+  data: { message: 'Sale not found' },
+};
+
 module.exports = {
   allSalesFromDB,
   saleFromDB,
+  successfulFromService,
+  notFoundFromService,
 };
