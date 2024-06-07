@@ -1,8 +1,9 @@
 const express = require('express');
 require('express-async-errors');
-const { productModel } = require('./models');
+const { productModel, saleModel } = require('./models');
 // const { productService } = require('./services');
 const { productController } = require('./controllers');
+const { saleController } = require('./controllers');
 // const { productRoutes } = require('./routes');
 
 const app = express();
@@ -21,6 +22,13 @@ app.get('/products', async (_req, res) => {
 });
 
 app.get('/products/:id', productController.findProductById);
+
+app.get('/sales', async (req, res) => {
+  const sales = await saleModel.findAll();
+  return res.status(200).json(sales);
+});
+
+app.get('/sales/:id', saleController.findSaleById);
 
 app.use((error, _req, res, _next) => res.status(500).json({ error: error.message }));
 
