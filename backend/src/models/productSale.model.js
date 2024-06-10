@@ -1,8 +1,9 @@
 const connection = require('./connection');
 
 const insert = async (saleId, saleData) => {
-  const query = 'INSERT INTO sale_id, product_id, quantity VALUE (?, ?, ?)';
+  const query = 'INSERT INTO sales_products (sale_id, product_id, quantity) VALUE (?, ?, ?)';
   const itemsSold = [];
+  // 5.3 Promise.all
   saleData.forEach(async (product) => {
     const { productId, quantity } = product;
     itemsSold.push({ productId, quantity });

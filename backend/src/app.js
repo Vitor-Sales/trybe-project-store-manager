@@ -26,6 +26,8 @@ app.post('/products', validateName, productController.insert);
 
 app.get('/products/:id', productController.findProductById);
 
+app.put('/products/:id', productController.update);
+
 app.get('/sales', async (req, res) => {
   const sales = await saleModel.findAll();
   return res.status(200).json(sales);

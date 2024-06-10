@@ -32,7 +32,17 @@ const insert = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
+const update = async (req, res) => {
+  const { name } = req.body;
+  const { id } = req.params;
+
+  const { status, data } = await productService.update(id, name);
+
+  return res.status(mapStatusHTTP(status)).json(data);
+};
+
 module.exports = {
   findProductById,
   insert,
+  update,
 };
