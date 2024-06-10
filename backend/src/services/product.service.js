@@ -1,4 +1,5 @@
 const { productModel } = require('../models');
+const schema = require('../validations/validationsInputValues');
 
 const productExists = (product) => {
   if (!product) return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
@@ -20,6 +21,19 @@ const findById = async (productId) => {
   return validateProduct;
 };
 
+const insert = async (productData) => {
+  const error = schema.validateProduct(productData);
+
+  if (error) return { status: error.status, data: { message: error.message } };
+
+  const newProductId = await productModel.insert(productData.name);
+
+  const newProduct = await productModel.findById(newProductId);
+
+  return { status: 'CREATED', data: newProduct };
+};
+
 module.exports = {
   findById,
+  insert,
 };

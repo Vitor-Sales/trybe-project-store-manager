@@ -4,6 +4,7 @@ const { productModel, saleModel } = require('./models');
 // const { productService } = require('./services');
 const { productController } = require('./controllers');
 const { saleController } = require('./controllers');
+const validateName = require('./middlewares/validateName');
 // const { productRoutes } = require('./routes');
 
 const app = express();
@@ -20,6 +21,8 @@ app.get('/products', async (_req, res) => {
 
   return res.status(200).json(products);
 });
+
+app.post('/products', validateName, productController.insert);
 
 app.get('/products/:id', productController.findProductById);
 
