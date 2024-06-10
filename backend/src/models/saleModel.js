@@ -17,7 +17,15 @@ const findById = async (saleId) => {
   return camelize(sale);
 };
 
+const insert = async () => {
+  const query = 'INSERT INTO sales (date) VALUE(NOW())';
+  const [{ insertId }] = await connection.execute(query);
+
+  return insertId;
+};
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };

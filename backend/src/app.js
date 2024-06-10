@@ -31,6 +31,8 @@ app.get('/sales', async (req, res) => {
   return res.status(200).json(sales);
 });
 
+app.post('/sales', saleController.insert);
+
 app.get('/sales/:id', saleController.findSaleById);
 
 app.use((error, _req, res, _next) => res.status(500).json({ error: error.message }));
