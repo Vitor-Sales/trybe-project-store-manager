@@ -34,6 +34,16 @@ describe('[PRODUCT.MODEL]', function () {
 
   // Teste se findById(id) nao houver resultados
 
+  it('Product insert(productName)', async function () {
+    // Arrange
+    sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+    const nameMock = 'Raio de Zeus';
+    // Act
+    const insertId = await productModel.insert(nameMock);
+    // Assert
+    expect(insertId).to.be.equal(4);
+  });
+
   afterEach(function () {
     sinon.restore();
   });

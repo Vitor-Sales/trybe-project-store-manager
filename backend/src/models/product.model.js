@@ -14,10 +14,10 @@ const findById = async (productId) => {
 };
 
 const insert = async (productName) => {
-  console.log(productName);
+  // console.log(productName);
   const query = 'INSERT INTO products (name) VALUE (?)';
   const [{ insertId }] = await connection.execute(query, [productName]);
-  console.log(insertId);
+  // console.log(insertId);
   return insertId;
 };
 
