@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { productService } = require('../../../src/services');
 const { productModel } = require('../../../src/models');
 const { productFromModel } = require('../mocks/product.mock');
-const schema = require('../../../src/validations/validationsInputValues');
+// const schema = require('../../../src/validations/validationsInputValues');
 
 describe('[PRODUCT.SERVICE]', function () {
   it('Product findById(id) - Listar produto com sucesso', async function () {
