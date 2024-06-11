@@ -5,12 +5,14 @@ const insert = async (saleId, saleData) => {
   const itemsSold = [];
   // 5.3 Promise.all
 
-  await Promise.all(saleData.forEach(async (product) => {
+  await Promise.all(saleData.map(async (product) => {
     const { productId, quantity } = product;
     itemsSold.push({ productId, quantity });
     await connection.execute(query, [saleId, productId, quantity]);
+    // return item;
   }));
   console.log(itemsSold);
+
   return itemsSold;
 };
 
