@@ -57,7 +57,8 @@ describe('[PRODUCT.SERVICE]', function () {
   it('Product update(productId, productNameData) - com sucesso', async function () {
     // Arrange
     const productModelUpdateMock = { id: 3, name: 'Capa do Batman' };
-    sinon.stub(productModel, 'update').resolves(productModelUpdateMock);
+    sinon.stub(productModel, 'update').resolves(null);
+    sinon.stub(productModel, 'findById').resolves(productModelUpdateMock);
 
     const id = 3;
     const nameData = { name: 'Capa do Batman' };

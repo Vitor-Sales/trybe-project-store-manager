@@ -49,9 +49,11 @@ const update = async (productId, productNameData) => {
   const error = schema.validateProduct(productNameData);
   if (error) return { status: error.status, data: { message: error.message } };
 
-  const updatedProduct = await productModel.update(productId, productNameData);
+  await productModel.update(productId, productNameData);
 
-  const validateProduct = productExists(updatedProduct);
+  const foundProduct = await productModel.findById(productId);
+
+  const validateProduct = productExists(foundProduct);
 
   return validateProduct;
 };
