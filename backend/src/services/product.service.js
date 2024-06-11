@@ -45,8 +45,15 @@ const update = async (productId, productNameData) => {
   return validateProduct;
 };
 
+// const deleteProduct = async (productId) => {
+//   const isDeleted = await productModel.deleteProduct(productId);
+
+//   return {status: }
+// };
+
 module.exports = {
   findById,
   insert,
   update,
+  // deleteProduct,
 };
