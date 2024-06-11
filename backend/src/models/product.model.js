@@ -21,11 +21,12 @@ const insert = async (productName) => {
   return insertId;
 };
 
-const update = async (productId, productName) => {
+const update = async (productId, productNameData) => {
+  const { name } = productNameData;
   const query = 'UPDATE products SET name = ? WHERE id = ?';
-  const updatedProduct = await connection.execute(query, [productName, productId]);
+  await connection.execute(query, [name, productId]);
 
-  return updatedProduct;
+  return { id: productId, name };
 };
 
 module.exports = {

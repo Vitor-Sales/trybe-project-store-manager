@@ -1,16 +1,11 @@
 const mapStatusHTTP = require('../utils/mapStatusHTTP');
 
 const validateId = (req, res, next) => {
-  const isIdinBody = 'id' in req.body;
-  if (!isIdinBody) {
+  const hasProductIdInAll = req.body.every((element) => 'productId' in element);
+  if (!hasProductIdInAll) {
     return res.status(mapStatusHTTP('BAD_REQUEST')).json({ message: '"productId" is required' });
   }
 
-  const { id } = req.body;
-  if (id === !id) {
-    return res.status(mapStatusHTTP('BAD_REQUEST'))
-      .json({ message: '"productId" is required' });
-  }
   next();
 };
 

@@ -6,6 +6,7 @@ const { productController } = require('./controllers');
 const { saleController } = require('./controllers');
 const validateName = require('./middlewares/validateName');
 const validateId = require('./middlewares/validateId');
+const validateQuantity = require('./middlewares/validateQuantity');
 // const { productRoutes } = require('./routes');
 
 const app = express();
@@ -27,14 +28,14 @@ app.post('/products', validateName, productController.insert);
 
 app.get('/products/:id', productController.findProductById);
 
-app.put('/products/:id', productController.update);
+app.put('/products/:id', validateName, productController.update);
 
 app.get('/sales', async (req, res) => {
   const sales = await saleModel.findAll();
   return res.status(200).json(sales);
 });
 
-app.post('/sales', validateId, saleController.insert);
+app.post('/sales', validateQuantity, validateId, saleController.insert);
 
 app.get('/sales/:id', saleController.findSaleById);
 

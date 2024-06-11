@@ -33,7 +33,7 @@ const insert = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const { name } = req.body;
+  const name = req.body;
   const { id } = req.params;
 
   const { status, data } = await productService.update(id, name);
