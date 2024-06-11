@@ -33,7 +33,14 @@ const insert = async (productData) => {
   return { status: 'CREATED', data: newProduct };
 };
 
+const update = async (productId, productName) => {
+  const updatedProduct = await productModel.update(productId, productName);
+
+  return { status: 'SUCCESSFUL', data: updatedProduct };
+};
+
 module.exports = {
   findById,
   insert,
+  update,
 };
