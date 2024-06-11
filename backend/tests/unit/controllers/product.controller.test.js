@@ -43,6 +43,26 @@ describe('[PRODUCT.CONTROLLER]', function () {
     expect(res.json).to.have.been.calledWith(notFoundFromService.data);
   });
 
+  it('Product update(req, res) - Passar resposta com sucesso', async function () {
+    // Arrange
+    const productServiceMock = { status: 'SUCCESSFUL', data: { id: 3, name: 'Capa do Batman' } };
+    sinon.stub(productService, 'update').resolves(productServiceMock);
+    const req = {
+      params: { id: 3 },
+      body: { name: 'Capa do Batman' },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+    // Act
+    await productController.update(req, res);
+    // Assert
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(productServiceMock.data);
+  });
+
   afterEach(function () {
     sinon.restore();
   });

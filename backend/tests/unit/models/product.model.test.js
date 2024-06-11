@@ -34,7 +34,7 @@ describe('[PRODUCT.MODEL]', function () {
 
   // Teste se findById(id) nao houver resultados
 
-  it('Product insert(productName)', async function () {
+  it('Product insert(productName) - com sucesso', async function () {
     // Arrange
     sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
     const nameMock = 'Raio de Zeus';
@@ -42,6 +42,21 @@ describe('[PRODUCT.MODEL]', function () {
     const insertId = await productModel.insert(nameMock);
     // Assert
     expect(insertId).to.be.equal(4);
+  });
+
+  // Teste com insert dando errado
+
+  it('Product update(idProduct, nameProductData) - com sucesso', async function () {
+    // Arrange
+    sinon.stub(connection, 'execute').resolves(null);
+    const id = 3;
+    const nameData = { name: 'Capa do Batman' };
+    // Act
+    const updatedProduct = await productModel.update(id, nameData);
+    // Assert
+
+    expect(updatedProduct.id).to.be.equal(3);
+    expect(updatedProduct.name).to.be.equal('Capa do Batman');
   });
 
   afterEach(function () {

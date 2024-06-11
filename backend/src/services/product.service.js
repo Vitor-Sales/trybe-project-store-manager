@@ -33,27 +33,38 @@ const insert = async (productData) => {
   return { status: 'CREATED', data: newProduct };
 };
 
+// const update = async (productId, productNameData) => {
+//   const error = schema.validateProduct(productNameData);
+//   if (error) return { status: error.status, data: { message: error.message } };
+
+//   await productModel.update(productId, productNameData);
+
+//   const updatedProduct = await productModel.findById(productId);
+//   const validateProduct = productExists(updatedProduct);
+
+//   return validateProduct;
+// };
+
 const update = async (productId, productNameData) => {
   const error = schema.validateProduct(productNameData);
   if (error) return { status: error.status, data: { message: error.message } };
 
-  await productModel.update(productId, productNameData);
+  const updatedProduct = await productModel.update(productId, productNameData);
 
-  const updatedProduct = await productModel.findById(productId);
   const validateProduct = productExists(updatedProduct);
 
   return validateProduct;
 };
 
-// const deleteProduct = async (productId) => {
-//   const isDeleted = await productModel.deleteProduct(productId);
+const deleteProduct = async (productId) => {
+  await productModel.deleteProduct(productId);
 
-//   return {status: }
-// };
+  return { status: 'NO_CONTENT' };
+};
 
 module.exports = {
   findById,
   insert,
   update,
-  // deleteProduct,
+  deleteProduct,
 };
