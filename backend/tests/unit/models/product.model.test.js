@@ -59,6 +59,15 @@ describe('[PRODUCT.MODEL]', function () {
     expect(updatedProduct.name).to.be.equal('Capa do Batman');
   });
 
+  // it('Product delete(productId) - deletar com sucesso', async function () {
+  //   // Arrange 
+
+  //   // Act
+  //   await 
+  //   // Assert
+
+  // })
+
   afterEach(function () {
     sinon.restore();
   });

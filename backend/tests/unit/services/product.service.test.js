@@ -83,6 +83,26 @@ describe('[PRODUCT.SERVICE]', function () {
     expect(responseService.data).to.be.deep.equal(returnData);
   });
 
+  it('Product delete(productId) - com sucesso', async function () {
+    // Arrange
+    sinon.stub(productModel, 'findById').resolves(true);
+    sinon.stub(productModel, 'deleteProduct').resolves(null);
+    // Act
+    const responseService = await productService.deleteProduct(1);
+    // Assert
+    expect(responseService.status).to.be.equal('NO_CONTENT');
+  });
+
+  it('Product delete(productId) - sem sucesso - produto inexistente', async function () {
+    // Arrange
+    sinon.stub(productModel, 'findById').resolves(false);
+
+    // Act
+    const responseService = await productService.deleteProduct(1);
+    // Assert
+    expect(responseService.status).to.be.equal('NOT_FOUND');
+  });
+
   afterEach(function () {
     sinon.restore();
   });

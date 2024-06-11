@@ -44,7 +44,9 @@ const update = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
 
-  const { status } = await productService.deleteProduct(id);
+  const { status, data } = await productService.deleteProduct(id);
+
+  if (status === 'NOT_FOUND') return res.status(mapStatusHTTP(status)).json(data);
 
   return res.status(mapStatusHTTP(status)).json();
 };

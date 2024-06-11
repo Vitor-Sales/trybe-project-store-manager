@@ -22,4 +22,4 @@ const insert = async (req, res) => {
 module.exports = {
   findSaleById,
   insert,
-};
+}; 
